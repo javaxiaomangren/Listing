@@ -1,0 +1,31 @@
+#!/bin/bash
+
+cd $(pwd $(dirname $0))
+
+KEY='-Dapp=hui800-listing'
+
+JAVA=java
+
+#NEWRELIC=$(pwd)/newrelic/newrelic.jar
+
+CLASSPATH=$(echo $(ls lib/*.jar) | sed "s/ /:/g")
+
+JAVA_OPTS="-Xmx2g -XX:+UseParNewGC -XX:+UseConcMarkSweepGC $KEY"
+
+if [ -f "$NEWRELIC" ]; then
+  NEWRELIC_OPTS='-javaagent:$NEWRELIC'
+fi
+
+MAIN_CLASS=com.hui800.listing.Main
+
+ARGUMENTS='-f conf/conf.scala'
+
+$JAVA -cp $CLASSPATH $MAIN_CLASS $ARGUMENTS --validate
+
+if [ $? = 0 ]; then
+  PID=$(ps x -o pid,cmd | grep " $KEY" | grep -v grep | grep -oP '^\s*(\d+)')
+
+  kill -9 $PID
+
+  exec $JAVA -cp $CLASSPATH $NEWRELIC_OPTS $JAVA_OPTS $MAIN_CLASS $ARGUMENTS
+fi

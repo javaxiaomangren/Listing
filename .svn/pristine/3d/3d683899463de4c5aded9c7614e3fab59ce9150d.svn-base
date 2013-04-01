@@ -1,0 +1,31 @@
+#!/bin/bash
+
+cd $(pwd $(dirname $0))
+
+start() {
+  java -cp $(echo $(ls lib/*.jar) | sed "s/ /:/g") com.hui800.listing.Listing -f conf/production.scala > /dev/null 2>&1 &
+}
+
+stop() {
+  kill $(ps -eo pid,cmd | grep com.hui800.listing.Listing | grep -v grep | grep -oP '^\d+')
+}
+
+restart() {
+  stop
+  start
+}
+
+validate() {
+  java -cp $(echo $(ls lib/*.jar) | sed "s/ /:/g") com.hui800.listing.Listing -f conf/production.scala --validate
+}
+
+
+if [ "$1" = 'start' ]; then
+  start
+elif [ "$1" = 'stop' ]; then
+  stop
+elif [ "$1" = 'validate' ]; then
+  validate
+elif [ "$1" = 'restart' ]; then
+  restart
+fi

@@ -1,0 +1,3 @@
+DROP TABLE IF EXISTS card_deal;
+
+RENAME TABLE $TMP_TABLE TO card_deal;

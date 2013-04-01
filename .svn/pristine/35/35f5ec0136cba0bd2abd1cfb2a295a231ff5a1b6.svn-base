@@ -1,0 +1,9 @@
+hui800.listing.currentDataSource=17
+
+hui800.listing.dataSource.16.jdbcUrl=jdbc:mysql://192.168.1.16:3306/list_db?characterEncoding=utf8&useCompression=true
+hui800.listing.dataSource.16.user=lbs_user
+hui800.listing.dataSource.16.password=LBS_#63dSjrws
+
+hui800.listing.dataSource.17.jdbcUrl=jdbc:mysql://192.168.1.17:3306/list_db?characterEncoding=utf8&useCompression=true
+hui800.listing.dataSource.17.user=lbs_user
+hui800.listing.dataSource.17.password=LBS_#63dSjrws

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<assembly>
+    <id>all</id>
+    <formats>
+        <format>tar.gz</format>
+    </formats>
+    <dependencySets>
+        <dependencySet>
+            <useProjectArtifact>true</useProjectArtifact>
+            <outputDirectory>lib</outputDirectory>
+        </dependencySet>
+    </dependencySets>
+    <files>
+        <file>
+            <source>${project.build.directory}/classes/db.properties</source>
+            <outputDirectory>conf</outputDirectory>
+            <fileMode>0644</fileMode>
+        </file>
+        <file>
+            <source>${project.build.directory}/classes/config/production.scala</source>
+            <outputDirectory>conf</outputDirectory>
+            <fileMode>0644</fileMode>
+        </file>
+        <file>
+            <source>${project.build.directory}/classes/hui800-listing</source>
+            <outputDirectory>.</outputDirectory>
+            <fileMode>0755</fileMode>
+        </file>
+    </files>
+</assembly>

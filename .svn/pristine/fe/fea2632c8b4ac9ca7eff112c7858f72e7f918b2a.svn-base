@@ -1,0 +1,22 @@
+#!/bin/bash
+
+tmpdir=$(mktemp -d)
+
+latest=$(pwd)/$(ls -tc *.tar.gz | head -n1)
+
+cd $tmpdir
+
+tar zxf $latest
+
+rm -rf ~/webserver/hui800-listing.bak
+
+mv ~/webserver/hui800-listing ~/webserver/hui800-listing.bak
+
+cd ..
+
+mv $tmpdir ~/webserver/hui800-listing
+
+cd ~/webserver/hui800-listing
+
+#./start &
+

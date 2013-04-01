@@ -1,0 +1,5 @@
+hui800.listing.currentDataSource=test
+
+hui800.listing.dataSource.test.jdbcUrl=jdbc:mysql://127.0.0.1:3306/list_db?characterEncoding=utf8&useCompression=true
+hui800.listing.dataSource.test.user=root
+hui800.listing.dataSource.test.password=99yuko8%#
